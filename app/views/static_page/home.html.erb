@@ -1,0 +1,11 @@
+<h1>Home Page</h1>
+<% if user_signed_in? %>
+    <div> Welcome <%= current_user.name %> <i><%= current_user.email %></i> into system </div>
+    <!--<br><a href="/">Contact</a> </br> -->
+    <%= link_to "Home", root_path %> </br>
+    <%= link_to "Edit Profile", edit_user_registration_path %> </br>
+    <%= link_to "Change password", change_password_users_path, method: :get %> </br> </br>
+    <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+<% else %>
+    <%= button_to "Sign in", new_user_session_path, method: :get %>
+<% end %>
