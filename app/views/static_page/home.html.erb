@@ -4,8 +4,12 @@
     <!--<br><a href="/">Contact</a> </br> -->
     <%= link_to "Home", root_path %> </br>
     <%= link_to "Edit Profile", edit_user_registration_path %> </br>
+    <% if current_user.admin? %>
+        <%= link_to "All users", users_path, method: :get %> </br>
+    <% end %>
     <%= link_to "Change password", change_password_users_path, method: :get %> </br> </br>
-    <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+    <%= button_to "Sign out", destroy_user_session_path, method: :delete %> </br>
+    
 <% else %>
     <%= button_to "Sign in", new_user_session_path, method: :get %>
 <% end %>

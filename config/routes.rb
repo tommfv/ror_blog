@@ -5,6 +5,10 @@ Rails.application.routes.draw do
 
   get 'registrations/update_resource'
   get 'home', to: "static_page#home"
+
+  scope :admin do
+    resources 'users'
+  end
   
   resource :users, only: [:change_password] do
     collection do
@@ -12,5 +16,4 @@ Rails.application.routes.draw do
       patch 'update_password'
     end
   end
-  
 end
