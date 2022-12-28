@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  # before_action :authorize_admin, only: [:new, :create]
   
   def index
-    @users = User.all
+    @users = User.all.order(:id)
   end
 
   def new
@@ -11,6 +12,20 @@ class UsersController < ApplicationController
 
   def create
   
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params_update)
+      flash[:success] = "Profile updated"
+      redirect_to users_path
+    else
+      render :edit
+    end
   end
 
   def change_password
@@ -34,4 +49,13 @@ class UsersController < ApplicationController
     params.require(:user).permit(:password, :password_confirmation, :current_password)
   end
 
+  def user_params_update
+    params.require(:user).permit(:name, :company, :admin)
+  end
+
+  def authorize_admin
+    return unless !current_user.admin?
+    redirect_to root_path, alert: 'Only Admin have access !'
+  end
+  
 end
