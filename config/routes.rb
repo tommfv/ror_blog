@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   scope :admin do
     resources 'users'
+    get   'users/new', to: "users#new"
   end
   
   resource :users, only: [:change_password] do
