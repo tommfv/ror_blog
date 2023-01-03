@@ -6,5 +6,6 @@ class User < ApplicationRecord
          :confirmable, :lockable, :trackable
 
   validates :name, presence: true, length: { maximum: 100 }       
-  validates :company, presence: true, length: { maximum: 200 }       
+  validates :company, presence: true, length: { maximum: 200 }  
+
 end

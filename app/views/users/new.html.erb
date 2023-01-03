@@ -1,0 +1,39 @@
+<h2>Create new user</h2>
+
+<%= form_with(model: @user, local: true) do |f| %>
+
+  <%= csrf_meta_tag %>
+  
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+  
+  <br/>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  
+  <br/>
+
+  <div class="field">
+    <%= f.label :company %>
+    <%= f.text_field :company %>
+  </div>
+  
+  <br/>
+
+  <div class="field">
+    <%= f.label :admin, "Admin", value: "true"  %>
+    <%= f.radio_button :admin, true %>
+    <%= f.label :admin, "Staff", value: "false" %>
+    <%= f.radio_button :admin, false , checked: true %>
+  </div>
+  <br/>
+
+  <div class="actions">
+    <%= f.submit "Create new user" %>
+  </div>
+<% end %>
