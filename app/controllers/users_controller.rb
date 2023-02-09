@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :authorize_admin, only: [:index, :create, :new]
-
+  
   def index
     @users = User.all.order(:id)
   end

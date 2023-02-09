@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :posts
   get 'users/update_password'
   root "static_page#home"
   devise_for :users, controllers: { registrations: 'registrations' }
