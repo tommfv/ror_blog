@@ -19,7 +19,7 @@
 
   <tbody>
     <%= button_to 'New User', users_new_path, :method => :get %> 
-    <br>
+    <br>``
     <br>
     <% @users.each do |user| %>
       <tr>
@@ -47,6 +47,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-<%= link_to "Back", root_path %>

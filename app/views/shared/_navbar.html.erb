@@ -1,0 +1,7 @@
+<nav class="nav">
+  <a class="nav-link active" href="<%= root_path %>">Home</a>
+  <a class="nav-link" href="<%= posts_path %>">Post</a>
+  <% if user_signed_in? && current_user.admin? %>
+      <a class="nav-link" href="<%= users_path %>">All Users</a>
+  <% end %>
+</nav>
